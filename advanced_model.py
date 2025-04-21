@@ -18,7 +18,6 @@ def train_advanced_models(data_path='data/train.csv', out_dir='models'):
     pickle.dump(scaler, open(f"{out_dir}/scaler_advanced.pkl", 'wb'))
 
     best_models = {}
-    # Define hyperparameter grids
     grids = {
         'Random Forest': {'model': RandomForestRegressor(random_state=42),
                'params': {'n_estimators': [50,100], 'max_depth': [None,10,20], 'min_samples_split': [2,5]}},
@@ -43,7 +42,7 @@ def train_advanced_models(data_path='data/train.csv', out_dir='models'):
             if mae < best_mae:
                 best_mae = mae
                 best_model = gs.best_estimator_
-        # Save best for this target
+
         filename = f"{out_dir}/advanced_best_model_{target}.pkl"
         pickle.dump(best_model, open(filename, 'wb'))
         print(f"Saved best {target} model to {filename} with MAE={best_mae:.4f}\n")

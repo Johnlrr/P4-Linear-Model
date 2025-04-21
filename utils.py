@@ -3,17 +3,14 @@ from sklearn.model_selection import train_test_split
 
 def load_and_clean(path: str):
     df = pd.read_csv(path)
-    # Xử lý missing hoặc outliers nếu cần
     df = df.dropna()
     return df
 
 def feature_engineering_basic(df):
-    # Task 1: chỉ dùng 4 voltage
-    X_o3 = df[['o3op1', 'o3op2', 'no2op1', 'no2op2']]
+    X = df[['o3op1', 'o3op2', 'no2op1', 'no2op2']]
     y_o3 = df['OZONE']
-    X_no2 = X_o3.copy()
     y_no2 = df['NO2']
-    return X_o3, y_o3, X_no2, y_no2
+    return X, y_o3, y_no2
 
 def feature_engineering_advanced(df):
     df = df.copy()

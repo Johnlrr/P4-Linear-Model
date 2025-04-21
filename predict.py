@@ -9,9 +9,8 @@ SCALER   = 'models/scaler_advanced.pkl'
 OUTPUT_PATH = 'predictions.csv'
 
 if __name__ == '__main__':
-    # Load test data
     df = pd.read_csv(TEST_PATH)
-    # Feature engineering giống advanced
+
     df['Time'] = pd.to_datetime(df['Time'])
     df['hour'] = df['Time'].dt.hour
     df['weekday'] = df['Time'].dt.weekday
@@ -28,7 +27,7 @@ if __name__ == '__main__':
     preds_o3 = model_o3.predict(X_scaled)
     preds_no2 = model_no2.predict(X_scaled)
 
-    # Lưu kết quả
+    # Save predictions to CSV
     out_df = pd.DataFrame({
         'O3_pred': preds_o3,
         'NO2_pred': preds_no2

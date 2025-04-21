@@ -1,10 +1,8 @@
 # Air Quality Sensor Calibration
 
-## Cài đặt
+## Setup environment
 
 pip install -r requirements.txt
-
-### Chạy huấn luyện
 
 # Task 1 (Normal Linear Model):
 
